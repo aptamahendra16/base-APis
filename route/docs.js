@@ -45,7 +45,7 @@ const options = {
 
 /**
  * @swagger
- * /api/savfrom:
+ * /api/savefrom:
  *   get:
  *     tags: [Downloader]
  *     parameters:
