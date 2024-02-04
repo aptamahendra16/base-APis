@@ -1,9 +1,9 @@
-const logger = require('morgan');
-const express = require("express");
-const sh = express();
+import logger from 'morgan';
+import express from "express";
+import docs from './route/docs';
+import api from './route/api';
 
-var docs = require('./route/docs');
-var api = require('./route/api');
+const sh = express();
 
 sh.use(logger('dev'));
 sh.get('/', (req, res) => {
@@ -18,6 +18,3 @@ sh.listen(5000, async () => {
     message: 'powered by https://github.com/xznsenpai'
   })
 });
-/*
-penulis: https://github.com/xznsenpai
-*/
