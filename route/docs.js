@@ -1,6 +1,7 @@
-const swaggerUi = require('swagger-ui-express');
-const swaggerJSDoc = require('swagger-jsdoc');
-const express = require('express');
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
+import express from 'express';
+
 const sh = express.Router();
 
 sh.use(express.json());
@@ -72,7 +73,8 @@ const options = {
 
 const swaggerDoc = swaggerJSDoc(options);
 sh.use("/playground", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-module.exports = sh;
+
+export default sh;
 /*
 penulis: https://github.com/xznsenpai
 */
