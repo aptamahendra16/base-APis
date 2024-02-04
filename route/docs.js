@@ -45,7 +45,7 @@ const options = {
 
 /**
  * @swagger
- * /api/savefrom:
+ * /api/mediafiredl:
  *   get:
  *     tags: [Downloader]
  *     parameters:
