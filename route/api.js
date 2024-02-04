@@ -1,55 +1,55 @@
-const express = require('express');
+import express from 'express';
 const sh = express.Router();
 
-let { igApi, getCookie } = require("insta-fetcher");
-let ig = new igApi("")//Cookie instagram.com
+import { igApi } from 'insta-fetcher';
 
-/*Respon nyet*/
-var creator = 'https://github.com/xznsenpai'
-var no_link_message = {
+let ig = new igApi(""); // Cookie instagram.com
+
+/* Response messages */
+const creator = 'https://github.com/xznsenpai';
+const noLinkMessage = {
   creator: creator,
   message: 'Mohon maaf, tidak ada URL yang dimasukkan ke dalam.'
 };
-var no_user_message = {
+const noUserMessage = {
   creator: creator,
   message: 'Mohon maaf, tidak ada USER yang dimasukkan ke dalam.'
 };
-var Error_message = {
+const errorMessage = {
   creator: creator,
   message: 'Maaf, terjadi kesalahan internal pada server. Silakan coba lagi nanti atau hubungi tim dukungan teknis.'
-}
+};
 
-/*Fetch instagram api with full details and simplified json metadata*/
+/* Fetch Instagram API with full details and simplified JSON metadata */
 sh.get('/instagram', async (req, res) => {
-  if (!req.query.url) return res.status(400).json(no_link_message);
-  ig.fetchPost(req.query.url)
-    .then((v) => {
-      res.status(200).json({
-        creator: creator,
-        ...v
-      });
-    })
-    .catch((Error) => {
-      console.log(Error);
-      res.status(500).json(Error_message);
+  if (!req.query.url) return res.status(400).json(noLinkMessage);
+  try {
+    const v = await ig.fetchPost(req.query.url);
+    res.status(200).json({
+      creator: creator,
+      ...v
     });
-});
-sh.post('/instagram', async (req, res) => {
-  if (!req.body.url) return res.status(400).json(no_link_message);
-  ig.fetchPost(req.body.url)
-    .then((v) => {
-      res.status(200).json({
-        creator: creator,
-        ...v
-      });
-    })
-    .catch((Error) => {
-      console.log(Error);
-      res.status(500).json(Error_message);
-    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(errorMessage);
+  }
 });
 
-module.exports = sh;
+sh.post('/instagram', async (req, res) => {
+  if (!req.body.url) return res.status(400).json(noLinkMessage);
+  try {
+    const v = await ig.fetchPost(req.body.url);
+    res.status(200).json({
+      creator: creator,
+      ...v
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(errorMessage);
+  }
+});
+
+export default sh;
 /*
 penulis: https://github.com/xznsenpai
 */
