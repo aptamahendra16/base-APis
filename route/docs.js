@@ -10,7 +10,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'insta-fetcher API Documentation',
+      title: 'dnmAPI',
       version: '2024',
     },
   },
@@ -55,7 +55,7 @@ const options = {
  *           type: string
  *           format: url
  *         required: true
- *         description: Input URL for Facebook
+ *         description: Input URL for MediaFire
  *     responses:
  *       200:
  *         description: Request executed successfully.
