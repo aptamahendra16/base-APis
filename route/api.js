@@ -36,22 +36,6 @@ sh.get('/instagram', async (req, res) => {
     });
 });
 
-sh.post('/instagram', async (req, res) => {
-  if (!req.body.url) return res.status(400).json(noLinkMessage);
-
-  ig.fetchPost(req.body.url)
-    .then((result) => {
-      res.status(200).json({
-        creator: creator,
-        ...result
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json(errorMessage);
-    });
-});
-
 module.exports = sh;
 /*
 Author: https://github.com/xznsenpai
