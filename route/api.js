@@ -5,7 +5,7 @@ const { igApi } = require('insta-fetcher');
 const ig = new igApi(""); // Cookie instagram.com
 
 /* Response messages */
-const creator = 'https://github.com/xznsenpai';
+const creator = 'dnm.my.id';
 const noLinkMessage = {
   creator: creator,
   message: 'Sorry, no URL was entered in.'
