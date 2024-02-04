@@ -1,7 +1,7 @@
 import logger from 'morgan';
 import express from "express";
-import docs from './route/docs.js';
-import api from './route/api.js';
+import docs from '../route/docs.js';
+import api from '../route/api.js';
 
 const sh = express();
 
