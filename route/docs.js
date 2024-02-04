@@ -43,30 +43,6 @@ const options = {
  *         description: Data not found or invalid endpoint.
  */
 
-/**
- * @swagger
- * /api/instagram:
- *   post:
- *     tags: [Downloader]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               url:
- *                 type: string
- *                 format: url
- *                 example: 'https://www.instagram.com/p/C2Tf_XuPCH8/?igsh=MTI4ampneGNsbTZxaA=='
- *                 description: Fetch Instagram API with full details and simplified JSON metadata
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
 const swaggerDoc = swaggerJSDoc(options);
 sh.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 module.exports = sh;
