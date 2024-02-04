@@ -8,10 +8,9 @@ sh.use(express.urlencoded({ extended: true }));
 
 const options = {
   definition: {
-    openapi: '3.0.0',
     info: {
-      title: 'insta-fetcher API Documentation',
-      version: '1.0.0',
+      title: 'dnmAPIs',
+      version: '024.02.04',
     },
   },
   apis: ['./route/*.js'],
