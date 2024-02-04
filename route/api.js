@@ -22,7 +22,7 @@ const errorMessage = {
 /* Fetch Instagram API with full details and simplified JSON metadata */
 sh.get('/instagram', async (req, res) => {
     const jsonnoLinkMessage = JSON.stringify(noLinkMessage, null, 2)
-  if (!req.query.url) return res.status(400).send(jsonnoLinkMessage);
+  if (!req.query.url) return res.status(400).json(jsonnoLinkMessage);
 
   ig.fetchPost(req.query.url)
     .then((result) => {
@@ -31,7 +31,7 @@ sh.get('/instagram', async (req, res) => {
             ...result
         }, (key, value) => (value === undefined ? null : value), 2)
 
-      res.status(200).send(stringifiedResult);
+      res.status(200).json(stringifiedResult);
     })
     .catch((error) => {
       console.log(error);
