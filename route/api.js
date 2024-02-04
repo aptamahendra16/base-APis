@@ -21,8 +21,8 @@ const errorMessage = {
 
 /* Fetch Instagram API with full details and simplified JSON metadata */
 sh.get('/instagram', async (req, res) => {
-    const jsonnoLinkMessage = JSON.stringify(noLinkMessage, null, 2)
-  if (!req.query.url) return res.status(400).json(jsonnoLinkMessage);
+    const jsonNoLinkMessage = JSON.stringify(noLinkMessage, null, 2)
+  if (!req.query.url) return res.status(400).json({ error: jsonNoLinkMessage});
 
   ig.fetchPost(req.query.url)
     .then((result) => {
