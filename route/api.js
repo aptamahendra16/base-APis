@@ -21,8 +21,10 @@ const errorMessage = {
 
 /* Fetch Instagram API with full details and simplified JSON metadata */
 sh.get('/instagram', async (req, res) => {
-    const jsonNoLinkMessage = JSON.stringify(noLinkMessage, null, 2)
-  if (!req.query.url) return res.status(400).json({ error: jsonNoLinkMessage});
+    if (!req.query.url) {
+        const stringifiedNoLinkMessage = JSON.stringify(noLinkMessage, null, 2);
+        return res.status(400).send(stringifiedNoLinkMessage);
+      }
 
   ig.fetchPost(req.query.url)
     .then((result) => {
@@ -31,12 +33,12 @@ sh.get('/instagram', async (req, res) => {
             ...result
         }, (key, value) => (value === undefined ? null : value), 2)
 
-      res.status(200).json(stringifiedResult);
+      res.status(200).send(stringifiedResult);
     })
     .catch((error) => {
       console.log(error);
       const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
-      res.status(500).json(jsonerrorMessage);
+      res.status(500).send(jsonerrorMessage);
     });
 });
 
