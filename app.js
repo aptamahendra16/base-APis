@@ -1,20 +1,25 @@
-import logger from 'morgan';
-import express from "express";
-import docs from '../route/docs.js';
-import api from '../route/api.js';
-
+const logger = require('morgan');
+const express = require("express");
 const sh = express();
 
+const docs = require('./route/docs');
+const api = require('./route/api');
+
 sh.use(logger('dev'));
+
 sh.get('/', (req, res) => {
-  res.redirect('/playground')
-})
+  res.redirect('/playground');
+});
+
 sh.use('/', docs);
 sh.use('/api', api);
 
-sh.listen(3000, async () => {
+sh.listen(5000, async () => {
   console.log({
     status: 'Active',
-    message: 'powered by https://github.com/xznsenpai'
-  })
+    message: 'Powered by https://github.com/xznsenpai'
+  });
 });
+/*
+Author: https://github.com/xznsenpai
+*/
