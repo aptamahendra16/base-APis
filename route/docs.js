@@ -8,9 +8,10 @@ sh.use(express.urlencoded({ extended: true }));
 
 const options = {
   definition: {
+    openapi: '3.0.0',
     info: {
-      title: 'dnmAPIs',
-      version: '024.02.04',
+      title: 'insta-fetcher API Documentation',
+      version: '2024',
     },
   },
   apis: ['./route/*.js'],
@@ -19,16 +20,14 @@ const options = {
 /**
  * @swagger
  * tags:
- *   name: insta-fetcher
- *   description: Fetch Instagram API with full details and simplified JSON metadata
+ *   name: Downloader
  */
 
 /**
  * @swagger
  * /api/instagram:
  *   get:
- *     summary: Fetch Instagram API with full details and simplified JSON metadata
- *     tags: [insta-fetcher]
+ *     tags: [Downloader]
  *     parameters:
  *       - in: query
  *         name: url
@@ -48,8 +47,7 @@ const options = {
  * @swagger
  * /api/instagram:
  *   post:
- *     summary: Fetch Instagram API with full details and simplified JSON metadata	
- *     tags: [insta-fetcher]
+ *     tags: [Downloader]
  *     requestBody:
  *       required: true
  *       content:
