@@ -21,18 +21,22 @@ const errorMessage = {
 
 /* Fetch Instagram API with full details and simplified JSON metadata */
 sh.get('/instagram', async (req, res) => {
-  if (!req.query.url) return res.status(400).json(noLinkMessage);
+    const jsonnoLinkMessage = JSON.stringify(noLinkMessage, null, 2)
+  if (!req.query.url) return res.status(400).send(jsonnoLinkMessage);
 
   ig.fetchPost(req.query.url)
     .then((result) => {
-      res.status(200).json({
-        creator: creator,
-        ...result
-      });
+        const stringifiedResult = JSON.stringify({
+            creator: creator,
+            ...result
+        }, (key, value) => (value === undefined ? null : value), 2)
+
+      res.status(200).send(stringifiedResult);
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json(errorMessage);
+      const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
+      res.status(500).json(jsonerrorMessage);
     });
 });
 
