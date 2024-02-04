@@ -1,7 +1,6 @@
-import swaggerUi from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
-import express from 'express';
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
+const express = require('express');
 const sh = express.Router();
 
 sh.use(express.json());
@@ -9,27 +8,27 @@ sh.use(express.urlencoded({ extended: true }));
 
 const options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "insta-fetcher API Documentation",
-      version: "1.0.0",
+      title: 'insta-fetcher API Documentation',
+      version: '1.0.0',
     },
   },
-  apis: ["./route/*.js"],
+  apis: ['./route/*.js'],
 };
 
 /**
  * @swagger
  * tags:
  *   name: insta-fetcher
- *   description: Fetch instagram api with full details and simplified json metadata
+ *   description: Fetch Instagram API with full details and simplified JSON metadata
  */
 
 /**
  * @swagger
  * /api/instagram:
  *   get:
- *     summary: Fetch instagram api with full details and simplified json metadata
+ *     summary: Fetch Instagram API with full details and simplified JSON metadata
  *     tags: [insta-fetcher]
  *     parameters:
  *       - in: query
@@ -38,18 +37,19 @@ const options = {
  *           type: string
  *           format: url
  *         required: true
- *         description: input url instagram
+ *         description: Input URL for Instagram
  *     responses:
  *       200:
- *         description: Request berhasil dieksekusi dengan sukses.
+ *         description: Request executed successfully.
  *       404:
- *          description: Data tidak ditemukan atau endpoint tidak valid.
+ *         description: Data not found or invalid endpoint.
  */
+
 /**
  * @swagger
  * /api/instagram:
  *   post:
- *     summary: Fetch instagram api with full details and simplified json metadata	
+ *     summary: Fetch Instagram API with full details and simplified JSON metadata	
  *     tags: [insta-fetcher]
  *     requestBody:
  *       required: true
@@ -61,20 +61,18 @@ const options = {
  *               url:
  *                 type: string
  *                 format: url
- *                 example: "https://www.instagram.com/p/C2Tf_XuPCH8/?igsh=MTI4ampneGNsbTZxaA=="
- *                 description: Fetch instagram api with full details and simplified json metadata
- * 
+ *                 example: 'https://www.instagram.com/p/C2Tf_XuPCH8/?igsh=MTI4ampneGNsbTZxaA=='
+ *                 description: Fetch Instagram API with full details and simplified JSON metadata
  *     responses:
  *       200:
- *         description: Request berhasil dieksekusi dengan sukses.
+ *         description: Request executed successfully.
  *       404:
- *          description: Data tidak ditemukan atau endpoint tidak valid.
+ *         description: Data not found or invalid endpoint.
  */
 
 const swaggerDoc = swaggerJSDoc(options);
-sh.use("/playground", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-
-export default sh;
+sh.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+module.exports = sh;
 /*
-penulis: https://github.com/xznsenpai
+Author: https://github.com/xznsenpai
 */
