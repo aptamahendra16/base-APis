@@ -12,6 +12,7 @@ const options = {
     info: {
       title: 'dnmAPI',
       version: '024.02.05',
+      description: 'Welcome to dnmAPI!',
     },
   },
   apis: ['./route/*.js'],
