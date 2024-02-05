@@ -1,6 +1,7 @@
 const express = require('express');
 const sh = express.Router();
-const { mediafiredl, facebookdl, instagramdl, tiktokdl } = require('@bochilteam/scraper');
+const { mediafiredl, facebookdl, instagramdl } = require('@bochilteam/scraper');
+const { tiktokdl } = require('tiktokdl')
 
 /* Response messages */
 const creator = 'dnm.my.id';
@@ -75,7 +76,7 @@ tiktokdl(req.query.url)
       const stringifiedResult = JSON.stringify({
           creator: creator,
           ...result,
-          credit: '@bochilteam'
+          credit: 'BOTCAHX'
       }, (key, value) => (value === undefined ? null : value), 2)
 
     res.status(200).send(stringifiedResult);
