@@ -11,7 +11,7 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'dnmAPI',
-      version: '2024',
+      version: '024.02.05',
     },
   },
   apis: ['./route/*.js'],
