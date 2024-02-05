@@ -1,8 +1,7 @@
 const express = require('express');
 const sh = express.Router();
 const { mediafiredl } = require('@bochilteam/scraper');
-const { igApi } = require('insta-fetcher');
-const ig = new igApi(""); // Cookie instagram.com
+const { instagramdl } = require('@bochilteam/scraper');
 
 /* Response messages */
 const creator = 'dnm.my.id';
@@ -26,11 +25,12 @@ sh.get('/instagram', async (req, res) => {
         return res.status(400).send(stringifiedNoLinkMessage);
       }
 
-  ig.fetchPost(req.query.url)
+  instagramdl(req.query.url)
     .then((result) => {
         const stringifiedResult = JSON.stringify({
             creator: creator,
-            ...result
+            ...result,
+            credit: '@bochilteam'
         }, (key, value) => (value === undefined ? null : value), 2)
 
       res.status(200).send(stringifiedResult);
@@ -52,7 +52,8 @@ sh.get('/mediafiredl', async (req, res) => {
     .then((result) => {
         const stringifiedResult = JSON.stringify({
             creator: creator,
-            ...result
+            ...result,
+            credit: '@bochilteam'
         }, (key, value) => (value === undefined ? null : value), 2)
 
       res.status(200).send(stringifiedResult);
