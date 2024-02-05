@@ -1,6 +1,6 @@
 const express = require('express');
 const sh = express.Router();
-const { mediafiredl, facebookdl, instagramdl } = require('@bochilteam/scraper');
+const { mediafiredl, facebookdl, instagramdl, tiktokdl } = require('@bochilteam/scraper');
 
 /* Response messages */
 const creator = 'dnm.my.id';
@@ -48,6 +48,29 @@ sh.get('/facebookdl', async (req, res) => {
     }
 
 facebookdl(req.query.url)
+  .then((result) => {
+      const stringifiedResult = JSON.stringify({
+          creator: creator,
+          ...result,
+          credit: '@bochilteam'
+      }, (key, value) => (value === undefined ? null : value), 2)
+
+    res.status(200).send(stringifiedResult);
+  })
+  .catch((error) => {
+    console.log(error);
+    const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
+    res.status(500).send(jsonerrorMessage);
+  });
+});
+
+sh.get('/tiktokdl', async (req, res) => {
+  if (!req.query.url) {
+      const stringifiedNoLinkMessage = JSON.stringify(noLinkMessage, null, 2);
+      return res.status(400).send(stringifiedNoLinkMessage);
+    }
+
+tiktokdl(req.query.url)
   .then((result) => {
       const stringifiedResult = JSON.stringify({
           creator: creator,
