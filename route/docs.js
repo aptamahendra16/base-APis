@@ -46,6 +46,26 @@ const options = {
 
 /**
  * @swagger
+ * /api/facebookdl:
+ *   get:
+ *     tags: [Downloader]
+ *     parameters:
+ *       - in: query
+ *         name: url
+ *         schema:
+ *           type: string
+ *           format: url
+ *         required: true
+ *         description: Input URL for Facebook
+ *     responses:
+ *       200:
+ *         description: Request executed successfully.
+ *       404:
+ *         description: Data not found or invalid endpoint.
+ */
+
+/**
+ * @swagger
  * /api/mediafiredl:
  *   get:
  *     tags: [Downloader]
