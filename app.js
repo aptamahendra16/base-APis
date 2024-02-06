@@ -1,10 +1,12 @@
 const logger = require('morgan');
 const express = require("express");
+const compression = require('compression')
 const sh = express();
 
 const docs = require('./route/docs');
 const api = require('./route/api');
 
+sh.use(compression())
 sh.use(logger('dev'));
 
 sh.get('/', (req, res) => {
