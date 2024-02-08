@@ -15,12 +15,12 @@ const errorMessage = {
 };
 
 sh.get('/simtalk', async (req, res) => {
-  if (!req.query.url) {
+  if (!req.query.text) {
     const stringifiedNoLinkMessage = JSON.stringify(noLinkMessage, null, 2);
     return res.status(400).send(stringifiedNoLinkMessage);
   }
 
-  simtalk(req.query.url, 'id')
+  simtalk(req.query.text, 'id')
     .then((result) => {
       const stringifiedResult = JSON.stringify({
         creator: creator,
