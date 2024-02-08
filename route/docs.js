@@ -1,7 +1,9 @@
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const express = require('express');
+const pkg = require('./package.json');
 const sh = express.Router();
+const version = pkg.version;
 
 sh.use(express.json());
 sh.use(express.urlencoded({ extended: true }));
@@ -11,7 +13,7 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'dnmAPI',
-      version: '024.02.05',
+      version: version,
       description: 'Welcome to dnmAPI!',
     },
   },
