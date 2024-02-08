@@ -20,7 +20,7 @@ sh.get('/simtalk', async (req, res) => {
     return res.status(400).send(stringifiedNoLinkMessage);
   }
 
-  simtalk(req.query.url. 'id')
+  simtalk(req.query.url, 'id')
     .then((result) => {
       const stringifiedResult = JSON.stringify({
         creator: creator,
