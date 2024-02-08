@@ -24,6 +24,7 @@ const options = {
  * @swagger
  * tags:
  *   name: Downloader
+ *   name: Random
  */
 
 /**
@@ -119,6 +120,26 @@ const options = {
  *           format: url
  *         required: true
  *         description: Input URL for MediaFire
+ *     responses:
+ *       200:
+ *         description: Request executed successfully.
+ *       404:
+ *         description: Data not found or invalid endpoint.
+ */
+
+/**
+ * @swagger
+ * /random/simtalk:
+ *   get:
+ *     tags: [Random]
+ *     parameters:
+ *       - in: query
+ *         name: text
+ *         schema:
+ *           type: string
+ *           format: text
+ *         required: true
+ *         description: Input text for SimSimi
  *     responses:
  *       200:
  *         description: Request executed successfully.
