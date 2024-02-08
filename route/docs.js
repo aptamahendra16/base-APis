@@ -147,6 +147,26 @@ const options = {
  *         description: Data not found or invalid endpoint.
  */
 
+/**
+ * @swagger
+ * /random/pinterest:
+ *   get:
+ *     tags: [Random]
+ *     parameters:
+ *       - in: query
+ *         name: text
+ *         schema:
+ *           type: string
+ *           format: text
+ *         required: true
+ *         description: Input text for Pinterest
+ *     responses:
+ *       200:
+ *         description: Request executed successfully.
+ *       404:
+ *         description: Data not found or invalid endpoint.
+ */
+
 const swaggerDoc = swaggerJSDoc(options);
 sh.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 module.exports = sh;
