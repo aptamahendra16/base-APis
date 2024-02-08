@@ -1,7 +1,7 @@
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const express = require('express');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const sh = express.Router();
 const version = pkg.version;
 
