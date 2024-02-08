@@ -30,85 +30,9 @@ const options = {
 /**
  * @swagger
  * /api/instagram:
- *   get:
- *     tags: [Downloader]
- *     parameters:
- *       - in: query
- *         name: url
- *         schema:
- *           type: string
- *           format: url
- *         required: true
- *         description: Input URL for Instagram
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
-/**
- * @swagger
  * /api/facebookdl:
- *   get:
- *     tags: [Downloader]
- *     parameters:
- *       - in: query
- *         name: url
- *         schema:
- *           type: string
- *           format: url
- *         required: true
- *         description: Input URL for Facebook
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
-/**
- * @swagger
  * /api/tiktokdl:
- *   get:
- *     tags: [Downloader]
- *     parameters:
- *       - in: query
- *         name: url
- *         schema:
- *           type: string
- *           format: url
- *         required: true
- *         description: Input URL for TikTok
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
-/**
- * @swagger
  * /api/youtube:
- *   get:
- *     tags: [Downloader]
- *     parameters:
- *       - in: query
- *         name: url
- *         schema:
- *           type: string
- *           format: url
- *         required: true
- *         description: Input URL for YouTube
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
-/**
- * @swagger
  * /api/mediafiredl:
  *   get:
  *     tags: [Downloader]
@@ -119,7 +43,7 @@ const options = {
  *           type: string
  *           format: url
  *         required: true
- *         description: Input URL for MediaFire
+ *         description: Input URL for Instagram
  *     responses:
  *       200:
  *         description: Request executed successfully.
