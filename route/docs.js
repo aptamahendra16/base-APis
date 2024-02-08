@@ -24,7 +24,6 @@ const options = {
  * @swagger
  * tags:
  *   name: Downloader
- *   name: AI
  */
 
 /**
@@ -120,26 +119,6 @@ const options = {
  *           format: url
  *         required: true
  *         description: Input URL for MediaFire
- *     responses:
- *       200:
- *         description: Request executed successfully.
- *       404:
- *         description: Data not found or invalid endpoint.
- */
-
-/**
- * @swagger
- * /ai/bard:
- *   get:
- *     tags: [AI]
- *     parameters:
- *       - in: query
- *         name: text
- *         schema:
- *           type: string
- *           format: text
- *         required: true
- *         description: Input text for Bard AI
  *     responses:
  *       200:
  *         description: Request executed successfully.
