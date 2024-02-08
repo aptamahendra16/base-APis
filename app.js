@@ -5,7 +5,6 @@ const sh = express();
 
 const docs = require('./route/docs');
 const api = require('./route/api');
-const ai = require('./route/ai');
 
 sh.use(compression())
 sh.use(logger('dev'));
@@ -16,7 +15,6 @@ sh.get('/', (req, res) => {
 
 sh.use('/', docs);
 sh.use('/api', api);
-sh.use('/ai', ai);
 
 sh.listen(5000, async () => {
   console.log({
