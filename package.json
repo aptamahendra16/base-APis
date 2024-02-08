@@ -30,6 +30,7 @@
     "@bochilteam/scraper": "^4.2.4",
     "tiktokdl": "^0.0.5",
     "compression": "^1.7.4",
-    "@xncn/instagramdownloaderpro": "^0.0.3"
+    "@xncn/instagramdownloaderpro": "^0.0.3",
+    "@xct007/frieren-scraper": "github:xct007/frieren-scraper"
   }
 }
