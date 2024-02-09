@@ -208,7 +208,7 @@ const options = {
  */
 
 const swaggerDoc = swaggerJSDoc(options);
-sh.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+sh.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 module.exports = sh;
 /*
 Author: https://github.com/xznsenpai
