@@ -2,6 +2,7 @@ const express = require('express');
 const sh = express.Router();
 const { simtalk } = require('simsimi-api');
 const { pinterest, googleImage, wallpaper, chord, gempa, liputan6, cnbcindonesia } = require('@bochilteam/scraper');
+const tinyurl = require('tinyurl-shorten');
 
 const creator = 'dnm.my.id';
 
@@ -165,6 +166,28 @@ sh.get('/cnbcindonesia', async (req, res) => {
       const stringifiedResult = JSON.stringify({
         ...result,
         credit: '@bochilteam'
+      }, (key, value) => (value === undefined ? null : value), 2);
+
+      res.status(200).send(stringifiedResult);
+    })
+    .catch((error) => {
+      console.log(error);
+      const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
+      res.status(500).send(jsonerrorMessage);
+    });
+});
+
+sh.get('/tinyurl', async (req, res) => {
+  if (!req.query.url) {
+    const stringifiedNoLinkMessage = JSON.stringify(noLinkMessage, null, 2);
+    return res.status(400).send(stringifiedNoLinkMessage);
+  }
+
+  tinyurl(req.query.url)
+    .then((result) => {
+      const stringifiedResult = JSON.stringify({
+        shorten: result,
+        credit: 'willuhmjs'
       }, (key, value) => (value === undefined ? null : value), 2);
 
       res.status(200).send(stringifiedResult);
