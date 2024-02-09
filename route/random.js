@@ -1,7 +1,7 @@
 const express = require('express');
 const sh = express.Router();
 const { simtalk } = require('simsimi-api');
-const { pinterest, googleImage } = require('@bochilteam/scraper');
+const { pinterest, googleImage, wallpaper } = require('@bochilteam/scraper');
 
 const creator = 'dnm.my.id';
 
@@ -68,6 +68,29 @@ sh.get('/googleImage', async (req, res) => {
   }
 
   googleImage(req.query.text)
+    .then((result) => {
+      const stringifiedResult = JSON.stringify({
+        creator: creator,
+        ...result,
+        credit: '@bochilteam'
+      }, (key, value) => (value === undefined ? null : value), 2);
+
+      res.status(200).send(stringifiedResult);
+    })
+    .catch((error) => {
+      console.log(error);
+      const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
+      res.status(500).send(jsonerrorMessage);
+    });
+});
+
+sh.get('/wallpaper', async (req, res) => {
+  if (!req.query.text) {
+    const stringifiedNoLinkMessage = JSON.stringify(noLinkMessage, null, 2);
+    return res.status(400).send(stringifiedNoLinkMessage);
+  }
+
+  wallpaper(req.query.text)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
         creator: creator,
