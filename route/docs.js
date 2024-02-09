@@ -263,6 +263,26 @@ const options = {
  *         description: Data not found or invalid endpoint.
  */
 
+/**
+ * @swagger
+ * /random/tinyurl:
+ *   get:
+ *     tags: [Random]
+ *     parameters:
+ *       - in: query
+ *         name: url
+ *         schema:
+ *           type: string
+ *           format: url
+ *         required: true
+ *         description: Input URL for TinyURL
+ *     responses:
+ *       200:
+ *         description: Request executed successfully.
+ *       404:
+ *         description: Data not found or invalid endpoint.
+ */
+
 const swaggerDoc = swaggerJSDoc(options);
 sh.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 module.exports = sh;
