@@ -11,7 +11,7 @@ sh.use(compression())
 sh.use(logger('dev'));
 
 sh.get('/', (req, res) => {
-  res.redirect('/playground');
+  res.redirect('/docs');
 });
 
 sh.use('/', docs);
