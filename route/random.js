@@ -1,7 +1,7 @@
 const express = require('express');
 const sh = express.Router();
 const { simtalk } = require('simsimi-api');
-const { pinterest, googleImage, wallpaper, chord } = require('@bochilteam/scraper');
+const { pinterest, googleImage, wallpaper, chord, gempa } = require('@bochilteam/scraper');
 
 const creator = 'dnm.my.id';
 
@@ -110,6 +110,23 @@ sh.get('/chord', async (req, res) => {
   }
 
   chord(req.query.text)
+    .then((result) => {
+      const stringifiedResult = JSON.stringify({
+        ...result,
+        credit: '@bochilteam'
+      }, (key, value) => (value === undefined ? null : value), 2);
+
+      res.status(200).send(stringifiedResult);
+    })
+    .catch((error) => {
+      console.log(error);
+      const jsonerrorMessage = JSON.stringify(errorMessage, null, 2)
+      res.status(500).send(jsonerrorMessage);
+    });
+});
+
+sh.get('/gempa', async (req, res) => {
+  gempa()
     .then((result) => {
       const stringifiedResult = JSON.stringify({
         ...result,
