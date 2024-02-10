@@ -1,6 +1,6 @@
 const express = require('express');
 const sh = express.Router();
-const { mediafiredl, facebookdl } = require('@bochilteam/scraper');
+const { mediafiredl, facebookdlv2 } = require('@bochilteam/scraper');
 const { tiktokdl } = require('tiktokdl');
 const { InstagramService } = require('@xncn/instagramdownloaderpro');
 const { youtube } = require('@xct007/frieren-scraper');
@@ -27,7 +27,6 @@ sh.get('/instagram', async (req, res) => {
   instagram.downloadService.Download(req.query.url)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
-        creator: creator,
         ...result,
         credit: '@xncn'
       }, (key, value) => (value === undefined ? null : value), 2);
@@ -47,10 +46,9 @@ sh.get('/facebookdl', async (req, res) => {
     return res.status(400).send(stringifiedNoLinkMessage);
   }
 
-  facebookdl(req.query.url)
+  facebookdlv2(req.query.url)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
-        creator: creator,
         ...result,
         credit: '@bochilteam'
       }, (key, value) => (value === undefined ? null : value), 2);
@@ -73,7 +71,6 @@ sh.get('/tiktokdl', async (req, res) => {
   tiktokdl(req.query.url)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
-        creator: creator,
         ...result,
         credit: 'BOTCAHX'
       }, (key, value) => (value === undefined ? null : value), 2);
@@ -96,7 +93,6 @@ sh.get('/youtube', async (req, res) => {
   youtube.download(req.query.url)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
-        creator: creator,
         ...result,
         credit: '@xct007'
       }, (key, value) => (value === undefined ? null : value), 2);
@@ -119,7 +115,6 @@ sh.get('/mediafiredl', async (req, res) => {
   mediafiredl(req.query.url)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
-        creator: creator,
         ...result,
         credit: '@bochilteam'
       }, (key, value) => (value === undefined ? null : value), 2);
