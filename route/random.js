@@ -3,8 +3,8 @@ const sh = express.Router();
 const { simtalk } = require('simsimi-api');
 const { pinterest, googleImage, wallpaper, chord, gempa, liputan6, cnbcindonesia } = require('@bochilteam/scraper');
 const tinyurl = require('tinyurl-shorten');
-const chatGpt = require('./api/chatGpt.js');
-const runChat = require('./api/GoogleGenerativeAI.js');
+const chatGpt = require('../api/chatGpt.js');
+const runChat = require('../api/GoogleGenerativeAI.js');
 
 const creator = 'dnm.my.id';
 
