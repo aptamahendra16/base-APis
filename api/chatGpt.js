@@ -23,7 +23,7 @@ async function chatGpt(query) {
 
       return response.data
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error(error);
     }
 }
 
