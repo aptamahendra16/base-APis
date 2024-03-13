@@ -229,7 +229,7 @@ sh.get('/GoogleGenerative', async (req, res) => {
     return res.status(400).send(stringifiedNoLinkMessage);
   }
 
-  chatGpt(req.query.text)
+  runChat(req.query.text)
     .then((result) => {
       const stringifiedResult = JSON.stringify({
         results: result,
