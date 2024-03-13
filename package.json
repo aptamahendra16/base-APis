@@ -1,6 +1,6 @@
 {
   "name": "base-APis",
-  "version": "024.02.09",
+  "version": "024.03.13",
   "description": "Skizo Tech APis",
   "main": "app.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "@xncn/instagramdownloaderpro": "^0.0.3",
     "@xct007/frieren-scraper": "github:xct007/frieren-scraper",
     "simsimi-api": "^1.0.3",
+    "@google/generative-ai": "^0.3.0",
     "tinyurl-shorten": "^1.0.1"
   }
 }
